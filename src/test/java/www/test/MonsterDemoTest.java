@@ -1,14 +1,11 @@
 package www.test;
 
 import org.testng.annotations.Test;
-import pagecomponents.FooterComponent;
+import pagecomponents.JobHeaderComponent;
 import pageobjects.pages.HomePage;
 import pageobjects.pages.SearchPhilipsJobsPage;
-import teststeps.SaveJobStep;
 
 import java.util.List;
-
-import static com.codeborne.selenide.Selenide.open;
 
 public class MonsterDemoTest extends MainTest {
 
@@ -21,14 +18,11 @@ public class MonsterDemoTest extends MainTest {
 
         new HomePage()
                 .openHomePage()
-                //.loginUser();
                 .createNewAccount()
                 .fillDataForNewAccount()
-        //new FooterComponent()
                 .clickOnPhilipsJobs();
-        List<String> selectedJobs = new SaveJobStep().saveSecondAndLastJob();
+        List<String> selectedJobs = new JobHeaderComponent().saveSecondAndLastJob();
         new SearchPhilipsJobsPage().openMySavedJobs().assertSavedJobs(selectedJobs);
-        System.out.println(selectedJobs);
 
     }
 }
