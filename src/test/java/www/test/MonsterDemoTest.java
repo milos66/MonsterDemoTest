@@ -11,7 +11,7 @@ public class MonsterDemoTest extends MainTest {
 
 //Almost every time, I am not able to fully scroll down, because it just stops loading new job offers,
 //even it is still not at the end.
-//Saved jobs are not displayed in "Saved jobs".
+//Saved jobs are not displayed in "Saved jobs", so it's not possible to assert names of saved 2nd and last jobs.
 
     @Test
     public static void demoTest() {
@@ -22,7 +22,9 @@ public class MonsterDemoTest extends MainTest {
                 .fillDataForNewAccount()
                 .clickOnPhilipsJobs();
         List<String> selectedJobs = new JobHeaderComponent().saveSecondAndLastJob();
-        new SearchPhilipsJobsPage().openMySavedJobs().assertSavedJobs(selectedJobs);
+        new SearchPhilipsJobsPage()
+                .openMySavedJobs()
+                .assertSavedJobs(selectedJobs);
 
     }
 }
